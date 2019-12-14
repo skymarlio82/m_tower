@@ -1,21 +1,17 @@
-package com.mymt.util;
+package com.migame.mtower.util;
 
-import com.mymt.MTGame;
+import com.migame.mtower.MTGame;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import static com.mymt.MTGame.GAME_PIX_72;
-import static com.mymt.MTGame.gameFrame;
-import static com.mymt.MTGame.gamePanel;
-import static com.mymt.MTGame.inConversation;
-import static com.mymt.MTGame.playerBean_1;
-import static com.mymt.util.DialogUtil.dialogBgImg;
-import static com.mymt.util.DialogUtil.dialogLPane;
-import static com.mymt.util.DialogUtil.imgIco;
-import static com.mymt.util.DialogUtil.text;
+import static com.migame.mtower.MTGame.GAME_PIX_72;
+import static com.migame.mtower.MTGame.gameFrame;
+import static com.migame.mtower.MTGame.gamePanel;
+import static com.migame.mtower.MTGame.inConversation;
+import static com.migame.mtower.MTGame.playerBean_1;
 
 /**
  * ShopUtil 工具类
@@ -31,40 +27,40 @@ public class ShopUtil {
         switch (id) {
             case 0:     // 第 3 层 商店
                 choice = new String[] {"▶增加 800 点生命（25 金币）", "▷增加 4 点攻击（25 金币）", "▷增加 4 点防御（25 金币）", "▷离开商店"};
-                imgIco.setIcon(new ImageIcon(MTGame.imgSource.get(22)));
+                DialogUtil.imgIco.setIcon(new ImageIcon(MTGame.imgSource.get(22)));
                 break;
             case 1:     // 第 5 层 神秘老人
                 choice = new String[]{"▶提升一级（需要 100 点）", "▷增加攻击5（需要 30 点） ", "▷增加防御5（需要 30 点）", "▷离开商店"};
-                imgIco.setIcon(new ImageIcon(MTGame.imgSource.get(26)));
+                DialogUtil.imgIco.setIcon(new ImageIcon(MTGame.imgSource.get(26)));
                 break;
             case 2:     // 第 5 层 商人
                 choice = new String[]{"▶购买 1 把黄钥匙（$ 10）", "▷购买 1 把蓝钥匙（$ 50）", "▷购买 1 把红钥匙（$ 100）", "▷离开商店"};
-                imgIco.setIcon(new ImageIcon(MTGame.imgSource.get(27)));
+                DialogUtil.imgIco.setIcon(new ImageIcon(MTGame.imgSource.get(27)));
                 break;
             case 3:     // 第 11 层 商店
                 choice = new String[]{"▶增加 4000 点生命（100 金币）", "▷增加 20 点攻击（100 金币）", "▷增加 20 点防御（100 金币）", "▷离开商店"};
-                imgIco.setIcon(new ImageIcon(MTGame.imgSource.get(22)));
+                DialogUtil.imgIco.setIcon(new ImageIcon(MTGame.imgSource.get(22)));
                 break;
             case 4:     // 第 12 层 商人
                 choice = new String[]{"▶卖出 1 把黄钥匙（$ 7）", "▷卖出 1 把黄钥匙（$ 35）", "▷卖出 1 把黄钥匙（$ 70）", "▷离开商店"};
-                imgIco.setIcon(new ImageIcon(MTGame.imgSource.get(27)));
+                DialogUtil.imgIco.setIcon(new ImageIcon(MTGame.imgSource.get(27)));
                 break;
             case 5:     // 第 13 层 神秘老人
                 choice = new String[]{"▶提升三级（需要 270 点）", "▷增加攻击 17（需要 95 点）", "▷增加防御 17（需要 95 点）", "▷离开商店"};
-                imgIco.setIcon(new ImageIcon(MTGame.imgSource.get(26)));
+                DialogUtil.imgIco.setIcon(new ImageIcon(MTGame.imgSource.get(26)));
                 break;
             default:
                 break;
         }
-        Insets insets = dialogLPane.getInsets();
-        imgIco.setBounds(20 + insets.left, 20 + insets.top, GAME_PIX_72, GAME_PIX_72);
-        text.setBounds(100 + insets.left, 20 + insets.top, 550 - 50, 250);
-        text.setText("请选择一个: \n " + choice[0] + " \n " + choice[1] + " \n " + choice[2] + " \n " + choice[3]);
-        dialogBgImg.setBounds(0, 0, 550, 250);
-        dialogLPane.setBounds(550, 230, 550, 250);
-        dialogLPane.add(imgIco, 2, 0);
-        dialogLPane.add(text, 3, 0);
-        gamePanel.add(dialogLPane);
+        Insets insets = DialogUtil.dialogLPane.getInsets();
+        DialogUtil.imgIco.setBounds(20 + insets.left, 20 + insets.top, GAME_PIX_72, GAME_PIX_72);
+        DialogUtil.text.setBounds(100 + insets.left, 20 + insets.top, 550 - 50, 250);
+        DialogUtil.text.setText("请选择一个: \n " + choice[0] + " \n " + choice[1] + " \n " + choice[2] + " \n " + choice[3]);
+        DialogUtil.dialogBgImg.setBounds(0, 0, 550, 250);
+        DialogUtil.dialogLPane.setBounds(550, 230, 550, 250);
+        DialogUtil.dialogLPane.add(DialogUtil.imgIco, 2, 0);
+        DialogUtil.dialogLPane.add(DialogUtil.text, 3, 0);
+        gamePanel.add(DialogUtil.dialogLPane);
         gamePanel.repaint();
         gameFrame.addKeyListener(new KeyListener() {
             int selection = 0;
@@ -82,7 +78,7 @@ public class ShopUtil {
                     selection = selection + 1;
                     choice[selection] = choice[selection].replaceAll("▷", "▶");
                     message = "选择一个: \n " + choice[0] + " \n " + choice[1] + " \n " + choice[2] + " \n " + choice[3];
-                    text.setText(message);
+                    DialogUtil.text.setText(message);
                     gameFrame.repaint();
                 }
                 if (selection != 0 && e.getKeyCode() == e.VK_W) {
@@ -90,7 +86,7 @@ public class ShopUtil {
                     selection = selection - 1;
                     choice[selection] = choice[selection].replaceAll("▷", "▶");
                     message = "选择一个: \n " + choice[0] + " \n " + choice[1] + " \n " + choice[2] + " \n " + choice[3];
-                    text.setText(message);
+                    DialogUtil.text.setText(message);
                     gameFrame.repaint();
                 }
                 if (e.getKeyCode() == e.VK_SPACE) {
@@ -116,9 +112,9 @@ public class ShopUtil {
                                     }
                                     break;
                                 case 3:
-                                    dialogLPane.remove(imgIco);
-                                    dialogLPane.remove(text);
-                                    gamePanel.remove(dialogLPane);
+                                    DialogUtil.dialogLPane.remove(DialogUtil.imgIco);
+                                    DialogUtil.dialogLPane.remove(DialogUtil.text);
+                                    gamePanel.remove(DialogUtil.dialogLPane);
                                     gameFrame.repaint();
                                     inConversation = false;
                                     gameFrame.removeKeyListener(this);
@@ -151,9 +147,9 @@ public class ShopUtil {
                                     }
                                     break;
                                 case 3:
-                                    dialogLPane.remove(imgIco);
-                                    dialogLPane.remove(text);
-                                    gamePanel.remove(dialogLPane);
+                                    DialogUtil.dialogLPane.remove(DialogUtil.imgIco);
+                                    DialogUtil.dialogLPane.remove(DialogUtil.text);
+                                    gamePanel.remove(DialogUtil.dialogLPane);
                                     gameFrame.repaint();
                                     inConversation = false;
                                     gameFrame.removeKeyListener(this);
@@ -183,9 +179,9 @@ public class ShopUtil {
                                     }
                                     break;
                                 case 3:
-                                    dialogLPane.remove(imgIco);
-                                    dialogLPane.remove(text);
-                                    gamePanel.remove(dialogLPane);
+                                    DialogUtil.dialogLPane.remove(DialogUtil.imgIco);
+                                    DialogUtil.dialogLPane.remove(DialogUtil.text);
+                                    gamePanel.remove(DialogUtil.dialogLPane);
                                     gameFrame.repaint();
                                     inConversation = false;
                                     gameFrame.removeKeyListener(this);
@@ -215,9 +211,9 @@ public class ShopUtil {
                                     }
                                     break;
                                 case 3:
-                                    dialogLPane.remove(imgIco);
-                                    dialogLPane.remove(text);
-                                    gamePanel.remove(dialogLPane);
+                                    DialogUtil.dialogLPane.remove(DialogUtil.imgIco);
+                                    DialogUtil.dialogLPane.remove(DialogUtil.text);
+                                    gamePanel.remove(DialogUtil.dialogLPane);
                                     gameFrame.repaint();
                                     inConversation = false;
                                     gameFrame.removeKeyListener(this);
@@ -247,9 +243,9 @@ public class ShopUtil {
                                     }
                                     break;
                                 case 3:
-                                    dialogLPane.remove(imgIco);
-                                    dialogLPane.remove(text);
-                                    gamePanel.remove(dialogLPane);
+                                    DialogUtil.dialogLPane.remove(DialogUtil.imgIco);
+                                    DialogUtil.dialogLPane.remove(DialogUtil.text);
+                                    gamePanel.remove(DialogUtil.dialogLPane);
                                     gameFrame.repaint();
                                     inConversation = false;
                                     gameFrame.removeKeyListener(this);
@@ -282,9 +278,9 @@ public class ShopUtil {
                                     }
                                     break;
                                 case 3:
-                                    dialogLPane.remove(imgIco);
-                                    dialogLPane.remove(text);
-                                    gamePanel.remove(dialogLPane);
+                                    DialogUtil.dialogLPane.remove(DialogUtil.imgIco);
+                                    DialogUtil.dialogLPane.remove(DialogUtil.text);
+                                    gamePanel.remove(DialogUtil.dialogLPane);
                                     gameFrame.repaint();
                                     inConversation = false;
                                     gameFrame.removeKeyListener(this);

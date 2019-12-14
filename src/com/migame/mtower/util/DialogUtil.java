@@ -1,6 +1,6 @@
-package com.mymt.util;
+package com.migame.mtower.util;
 
-import com.mymt.data.ImageData;
+import com.migame.mtower.data.ImageData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,10 +8,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
-import static com.mymt.MTGame.GAME_PIX_72;
-import static com.mymt.MTGame.gameFrame;
-import static com.mymt.MTGame.gamePanel;
-import static com.mymt.MTGame.inConversation;
+import static com.migame.mtower.MTGame.GAME_PIX_72;
+import static com.migame.mtower.MTGame.gameFrame;
+import static com.migame.mtower.MTGame.gamePanel;
+import static com.migame.mtower.MTGame.inConversation;
 
 public class DialogUtil {
 

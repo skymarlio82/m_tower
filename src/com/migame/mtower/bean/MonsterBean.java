@@ -1,4 +1,4 @@
-package com.mymt.bean;
+package com.migame.mtower.bean;
 
 import java.io.Serializable;
 

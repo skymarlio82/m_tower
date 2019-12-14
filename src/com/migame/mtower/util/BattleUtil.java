@@ -1,18 +1,15 @@
-package com.mymt.util;
+package com.migame.mtower.util;
 
-import com.mymt.MTGame;
-import com.mymt.bean.MonsterBean;
-import com.mymt.data.ImageData;
-import com.mymt.data.MonsterData;
+import com.migame.mtower.MTGame;
+import com.migame.mtower.bean.MonsterBean;
+import com.migame.mtower.data.ImageData;
+import com.migame.mtower.data.MapData;
+import com.migame.mtower.data.MonsterData;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import static com.mymt.MTGame.GAME_PIX_72;
-import static com.mymt.MTGame.currentFloor;
-import static com.mymt.data.MapData.LvMap;
 
 /**
  * BattleUtil 工具类
@@ -56,7 +53,7 @@ public class BattleUtil {
         monsterImg = new JLabel(new ImageIcon(MTGame.imgSource.get(id)));
         // 初始化 战斗信息面板
         battleLPane.setLayout(null);
-        battleLPane.setBounds(27, GAME_PIX_72*2, 1242, 541);
+        battleLPane.setBounds(27, MTGame.GAME_PIX_72*2, 1242, 541);
         battleBgLabel.setBounds(0, 0, 1242, 541);
         battleLPane.add(battleBgLabel, 1, 0);
         battleLPane.setOpaque(true);
@@ -116,7 +113,7 @@ public class BattleUtil {
                     battleLPane.remove(player_hp);
                     battleLPane.remove(player_attack);
                     battleLPane.remove(player_defend);
-                    LvMap[currentFloor][y][x] = 0;
+                    MapData.LvMap[MTGame.currentFloor][y][x] = 0;
                     MTGame.playerBean_1.move(x, y);
                     ((Timer) ex.getSource()).stop();
                 }

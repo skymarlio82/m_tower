@@ -1,6 +1,6 @@
-package com.mymt.bean;
+package com.migame.mtower.bean;
 
-import com.mymt.data.ImageData;
+import com.migame.mtower.data.ImageData;
 
 import java.awt.image.BufferedImage;
 import java.io.Serializable;

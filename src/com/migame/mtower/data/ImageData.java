@@ -1,4 +1,4 @@
-package com.mymt.data;
+package com.migame.mtower.data;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

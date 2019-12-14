@@ -1,6 +1,6 @@
-package com.mymt.data;
+package com.migame.mtower.data;
 
-import com.mymt.bean.MonsterBean;
+import com.migame.mtower.bean.MonsterBean;
 
 import java.util.HashMap;
 

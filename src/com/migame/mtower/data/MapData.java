@@ -1,4 +1,4 @@
-package com.mymt.data;
+package com.migame.mtower.data;
 
 /**
  * MapData 类

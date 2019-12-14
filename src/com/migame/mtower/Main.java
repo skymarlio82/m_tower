@@ -1,25 +1,23 @@
-package com.mymt;
+package com.migame.mtower;
 
-import com.mymt.bean.ItemsBean;
+import com.migame.mtower.bean.ItemsBean;
+import com.migame.mtower.util.ForecastUtil;
+import com.migame.mtower.util.JumpUtil;
+import com.migame.mtower.util.MsgUtil;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import static com.mymt.MTGame.GAME_PIX_72;
-import static com.mymt.MTGame.gameFrame;
-import static com.mymt.MTGame.gamePanel;
-import static com.mymt.MTGame.inConversation;
-import static com.mymt.MTGame.interaction;
-import static com.mymt.MTGame.playerBean_1;
-import static com.mymt.MTGame.timeLabel;
-import static com.mymt.util.BattleUtil.battleLPane;
-import static com.mymt.util.ForecastUtil.displayForecast;
-import static com.mymt.util.ForecastUtil.forecastLPane;
-import static com.mymt.util.JumpUtil.displayJump;
-import static com.mymt.util.JumpUtil.jumpLPane;
-import static com.mymt.util.MsgUtil.msgLPane;
+import static com.migame.mtower.MTGame.GAME_PIX_72;
+import static com.migame.mtower.MTGame.gameFrame;
+import static com.migame.mtower.MTGame.gamePanel;
+import static com.migame.mtower.MTGame.inConversation;
+import static com.migame.mtower.MTGame.interaction;
+import static com.migame.mtower.MTGame.playerBean_1;
+import static com.migame.mtower.MTGame.timeLabel;
+import static com.migame.mtower.util.BattleUtil.battleLPane;
 import static java.awt.event.KeyEvent.VK_DOWN;
 import static java.awt.event.KeyEvent.VK_J;
 import static java.awt.event.KeyEvent.VK_L;
@@ -32,10 +30,10 @@ public class Main {
     public static void main(String[] args) {
         gamePanel = new MTGame();
         gamePanel.setPreferredSize(new Dimension(GAME_PIX_72*18, GAME_PIX_72*13));
-        gamePanel.add(forecastLPane);
-        gamePanel.add(jumpLPane);
+        gamePanel.add(ForecastUtil.forecastLPane);
+        gamePanel.add(JumpUtil.jumpLPane);
         gamePanel.add(battleLPane);
-        gamePanel.add(msgLPane);
+        gamePanel.add(MsgUtil.msgLPane);
         gamePanel.add(timeLabel);
         gameFrame.addKeyListener(new KeyListener() {
             @Override
@@ -82,13 +80,13 @@ public class Main {
                         // 键盘 J
                         case VK_J:
                             if (ItemsBean.isHasJump) {
-                                displayJump();
+                                JumpUtil.displayJump();
                             }
                             break;
                         // 键盘 L
                         case VK_L:
                             if (ItemsBean.isHasForecast) {
-                                displayForecast();
+                                ForecastUtil.displayForecast();
                             }
                             break;
                         default:
@@ -97,8 +95,8 @@ public class Main {
                 } else if (e.getKeyCode() == e.VK_L) {
                     // bug fixed
                     inConversation = false;
-                    forecastLPane.removeAll();
-                    forecastLPane.setVisible(false);
+                    ForecastUtil.forecastLPane.removeAll();
+                    ForecastUtil.forecastLPane.setVisible(false);
                 }
             }
 

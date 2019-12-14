@@ -1,15 +1,15 @@
-package com.mymt.util;
+package com.migame.mtower.util;
 
-import com.mymt.data.ImageData;
+import com.migame.mtower.data.ImageData;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static com.mymt.MTGame.GAME_PIX_72;
-import static com.mymt.MTGame.gameFrame;
-import static com.mymt.MTGame.inConversation;
+import static com.migame.mtower.MTGame.GAME_PIX_72;
+import static com.migame.mtower.MTGame.gameFrame;
+import static com.migame.mtower.MTGame.inConversation;
 
 /**
  * MsgUtil 工具类

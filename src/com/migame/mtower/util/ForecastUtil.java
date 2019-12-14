@@ -1,17 +1,17 @@
-package com.mymt.util;
+package com.migame.mtower.util;
 
-import com.mymt.MTGame;
-import com.mymt.bean.MonsterBean;
-import com.mymt.data.MonsterData;
+import com.migame.mtower.MTGame;
+import com.migame.mtower.bean.MonsterBean;
+import com.migame.mtower.data.MonsterData;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashSet;
 
-import static com.mymt.MTGame.GAME_PIX_72;
-import static com.mymt.MTGame.currentFloor;
-import static com.mymt.MTGame.inConversation;
-import static com.mymt.data.MapData.LvMap;
+import static com.migame.mtower.MTGame.GAME_PIX_72;
+import static com.migame.mtower.MTGame.currentFloor;
+import static com.migame.mtower.MTGame.inConversation;
+import static com.migame.mtower.data.MapData.LvMap;
 
 /**
  * ForecastUtil 工具类

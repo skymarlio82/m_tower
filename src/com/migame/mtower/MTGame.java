@@ -1,14 +1,15 @@
-package com.mymt;
+package com.migame.mtower;
 
-import com.mymt.bean.DialoguesBean;
-import com.mymt.bean.ItemsBean;
-import com.mymt.bean.PlayerBean;
-import com.mymt.data.ImageData;
-import com.mymt.data.MonsterData;
-import com.mymt.util.BattleUtil;
-import com.mymt.util.ForecastUtil;
-import com.mymt.util.MsgUtil;
-import com.mymt.util.ShopUtil;
+import com.migame.mtower.bean.DialoguesBean;
+import com.migame.mtower.bean.ItemsBean;
+import com.migame.mtower.bean.PlayerBean;
+import com.migame.mtower.data.ImageData;
+import com.migame.mtower.data.MapData;
+import com.migame.mtower.data.MonsterData;
+import com.migame.mtower.util.ForecastUtil;
+import com.migame.mtower.util.MsgUtil;
+import com.migame.mtower.util.ShopUtil;
+import com.migame.mtower.util.BattleUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,10 +17,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
-
-import static com.mymt.data.MapData.LvMap;
-import static com.mymt.data.MapData.finPos;
-import static com.mymt.data.MapData.initPos;
 
 /**
  * MTGame 类
@@ -105,7 +102,7 @@ public class MTGame extends JPanel {
         // 绘制 地图数据
         for (int x = 0; x < 11; x++) {
             for (int y = 0; y < 11; y++) {
-                int id = LvMap[currentFloor][x][y];
+                int id = MapData.LvMap[currentFloor][x][y];
                 BufferedImage a = imgSource.get(id);
                 g2.drawImage(a, GAME_PIX_72*y + GAME_PIX_72*6, GAME_PIX_72*x + GAME_PIX_72, null);
             }
@@ -131,7 +128,7 @@ public class MTGame extends JPanel {
 
     // 核 心 交 互 函 数
     public static void interaction(int x, int y) {
-        int id = LvMap[currentFloor][y][x];
+        int id = MapData.LvMap[currentFloor][y][x];
         switch (id) {
             case 0:     // 玩家移动
                 playerBean_1.move(x, y);
@@ -140,21 +137,21 @@ public class MTGame extends JPanel {
                 break;
             case 2:     // 黄门
                 if (playerBean_1.getYkey() > 0) {
-                    LvMap[currentFloor][y][x] = 0;
+                    MapData.LvMap[currentFloor][y][x] = 0;
                     playerBean_1.setYkey(playerBean_1.getYkey() - 1);
                     playerBean_1.move(x, y);
                 }
                 break;
             case 3:     // 蓝门
                 if (playerBean_1.getBkey() > 0) {
-                    LvMap[currentFloor][y][x] = 0;
+                    MapData.LvMap[currentFloor][y][x] = 0;
                     playerBean_1.setBkey(playerBean_1.getBkey() - 1);
                     playerBean_1.move(x, y);
                 }
                 break;
             case 4:     // 红门
                 if (playerBean_1.getRkey() > 0) {
-                    LvMap[currentFloor][y][x] = 0;
+                    MapData.LvMap[currentFloor][y][x] = 0;
                     playerBean_1.setRkey(playerBean_1.getRkey() - 1);
                     playerBean_1.move(x, y);
                 }
@@ -162,43 +159,43 @@ public class MTGame extends JPanel {
             case 5:     // 石块
                 break;
             case 6:     // [道具] 黄钥匙
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setYkey(MTGame.playerBean_1.getYkey() + 1);
                 MsgUtil.displayMessage("得到一把 黄钥匙 ！");
                 break;
             case 7:     // [道具] 蓝钥匙
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setBkey(MTGame.playerBean_1.getBkey() + 1);
                 MsgUtil.displayMessage("得到一把 蓝钥匙 ！");
                 break;
             case 8:     // [道具] 红钥匙
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setRkey(MTGame.playerBean_1.getRkey() + 1);
                 MsgUtil.displayMessage("得到一把 红钥匙 ！");
                 break;
             case 9:     // [道具] 蓝宝石
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setDefend(MTGame.playerBean_1.getDefend() + 3);
                 MsgUtil.displayMessage("得到一个蓝宝石 防御力加 3 ！");
                 break;
             case 10:    // [道具] 红宝石
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setAttack(MTGame.playerBean_1.getAttack() + 3);
                 MsgUtil.displayMessage("得到一个红宝石 攻击力加 3 ！");
                 break;
             case 11:    // [道具] 红药水
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setHp(MTGame.playerBean_1.getHp() + 200);
                 MsgUtil.displayMessage("得到一个小血瓶 生命加 200 ！");
                 break;
             case 12:    // [道具] 蓝药水
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setHp(MTGame.playerBean_1.getHp() + 500);
                 MsgUtil.displayMessage("得到一个大血瓶 生命加 500 ！");
@@ -206,11 +203,11 @@ public class MTGame extends JPanel {
             case 13:    // 上楼
                 currentFloor++;
                 maxFloor = Math.max(maxFloor, currentFloor);
-                playerBean_1.move(initPos[currentFloor][0], initPos[currentFloor][1]);
+                playerBean_1.move(MapData.initPos[currentFloor][0], MapData.initPos[currentFloor][1]);
                 break;
             case 14:    // 下楼
                 currentFloor--;
-                playerBean_1.move(finPos[currentFloor][0], finPos[currentFloor][1]);
+                playerBean_1.move(MapData.finPos[currentFloor][0], MapData.finPos[currentFloor][1]);
                 break;
             case 15:    // 不可通过的护栏
                 break;
@@ -226,17 +223,18 @@ public class MTGame extends JPanel {
                 }
                 break;
             case 24:    // [对话] 仙子
+                inConversation = true;
                 new DialoguesBean(id);
                 break;
             case 25:    // [对话] 小偷
             case 26:    // [对话] 老人
             case 27:    // [对话] 商人
             case 28:    // [对话] 公主
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 break;
             case 30:    // [道具] 小飞羽
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setLevel(MTGame.playerBean_1.getLevel() + 1);
                 playerBean_1.setHp(MTGame.playerBean_1.getHp() + 1000);
@@ -245,7 +243,7 @@ public class MTGame extends JPanel {
                 MsgUtil.displayMessage("得到 小飞羽 等级提升一级 ！");
                 break;
             case 31:    // [道具] 大飞羽
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 playerBean_1.setLevel(MTGame.playerBean_1.getLevel() + 3);
                 playerBean_1.setHp(MTGame.playerBean_1.getHp() + 3000);
@@ -254,31 +252,31 @@ public class MTGame extends JPanel {
                 MsgUtil.displayMessage("得到 大飞羽 等级提升三级 ！");
                 break;
             case 32:    // [宝物] 幸运十字架
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 ItemsBean.isHasCross = true;
                 MsgUtil.displayMessage("【幸运十字架】 把它交给序章中的仙子，可以将自身的所有能力提升一些（攻击、防御和生命值）。");
                 break;
             case 33:    // [宝物] 圣水瓶
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setHp(MTGame.playerBean_1.getHp() * 2);
                 MsgUtil.displayMessage("【圣水瓶】 它可以将你的体质增加一倍（生命值加倍）。");
                 break;
             case 34:    // [宝物] 圣光徽
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 ItemsBean.isHasForecast = true;
                 MsgUtil.displayMessage("【圣光徽】 按 L 键使用 查看怪物的基本情况。");
                 break;
             case 35:    // [宝物] 风之罗盘
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 ItemsBean.isHasJump = true;
                 MsgUtil.displayMessage("【风之罗盘】 按 J 键使用 在已经走过的楼层间进行跳跃。");
                 break;
             case 36:    // [道具] 钥匙盒
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setYkey(MTGame.playerBean_1.getYkey() + 1);
                 MTGame.playerBean_1.setBkey(MTGame.playerBean_1.getBkey() + 1);
@@ -286,13 +284,13 @@ public class MTGame extends JPanel {
                 MsgUtil.displayMessage("得到 钥匙盒 各种钥匙数加 1 ！");
                 break;
             case 38:    // [宝物] 星光神榔
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 ItemsBean.isHasHammer = true;
                 MsgUtil.displayMessage("【星光神榔】 把它交给第四层的小偷，小偷便会用它打开第十八层的隐藏地面（你就可以救出公主了）。");
                 break;
             case 39:    // [道具] 金块
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setMoney(MTGame.playerBean_1.getMoney() + 300);
                 MsgUtil.displayMessage("得到 金块 金币数加 300 ！");
@@ -336,48 +334,48 @@ public class MTGame extends JPanel {
                 }
                 break;
             case 71:    // [宝物] 铁剑
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setAttack(MTGame.playerBean_1.getAttack() + 10);
                 MsgUtil.displayMessage("得到 铁剑 攻击加 10 ！");
                 break;
             case 73:    // [宝物] 钢剑
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setAttack(MTGame.playerBean_1.getAttack() + 30);
                 MsgUtil.displayMessage("得到 钢剑 攻击加 30 ！");
                 break;
             case 75:    // [宝物] 圣光剑
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setAttack(MTGame.playerBean_1.getAttack() + 120);
                 MsgUtil.displayMessage("得到 圣光剑 攻击加 120 ！");
                 break;
             case 76:    // [宝物]
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setDefend(MTGame.playerBean_1.getDefend() + 10);
                 MsgUtil.displayMessage("得到 铁盾 防御加 10 ！");
                 break;
             case 78:    // [宝物] 钢盾
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setDefend(MTGame.playerBean_1.getDefend() + 30);
                 MsgUtil.displayMessage("得到 钢盾 防御加 30 ！");
                 break;
             case 80:    // [宝物] 星光盾
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 MTGame.playerBean_1.setDefend(MTGame.playerBean_1.getDefend() + 120);
                 MsgUtil.displayMessage("得到 星光盾 防御加 120 ！");
                 break;
             case 115:   // 可通过的护栏
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 break;
             case 119:   // 同 case 1:
             case 129:   // 同 case 1:
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 break;
             case 188:
@@ -390,12 +388,12 @@ public class MTGame extends JPanel {
                 break;
             case 202:   // [宝物] 炎之灵杖
                 MsgUtil.displayMessage("得到 炎之灵杖");
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 break;
             case 203:   // [宝物] 心之灵杖
                 MsgUtil.displayMessage("得到 心之灵杖");
-                LvMap[currentFloor][y][x] = 0;
+                MapData.LvMap[currentFloor][y][x] = 0;
                 playerBean_1.move(x, y);
                 break;
             case 301:   // 22层 到 24层
