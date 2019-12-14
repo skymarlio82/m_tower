@@ -66,7 +66,6 @@ public class ImageData {
             imagesMap0.put(26, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map0/26.png")));
             imagesMap0.put(27, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map0/27.png")));
             imagesMap0.put(28, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map0/28.png")));
-//            imagesMap0.put(29, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map0/29.png")));
             imagesMap0.put(30, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map0/30.png")));
             imagesMap0.put(31, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map0/31.png")));
             imagesMap0.put(32, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map0/32.png")));
@@ -131,7 +130,6 @@ public class ImageData {
             imagesMap0.put(197, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map0/197.png")));
             imagesMap0.put(198, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map0/198.png")));
             imagesMap0.put(199, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map0/199.png")));
-//            imagesMap0.put(201, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map0/201.png")));
             imagesMap0.put(202, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map0/202.png")));
             imagesMap0.put(203, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map0/203.png")));
             // 重复图片
@@ -171,7 +169,6 @@ public class ImageData {
             imagesMap1.put(26, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map1/26.png")));
             imagesMap1.put(27, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map1/27.png")));
             imagesMap1.put(28, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map1/28.png")));
-//            imagesMap1.put(29, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map1/29.png")));
             imagesMap1.put(30, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map1/30.png")));
             imagesMap1.put(31, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map1/31.png")));
             imagesMap1.put(32, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map1/32.png")));
@@ -236,7 +233,6 @@ public class ImageData {
             imagesMap1.put(197, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map1/197.png")));
             imagesMap1.put(198, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map1/198.png")));
             imagesMap1.put(199, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map1/199.png")));
-//            imagesMap1.put(201, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map1/201.png")));
             imagesMap1.put(202, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map1/202.png")));
             imagesMap1.put(203, ImageIO.read(new File(System.getProperty("user.dir") + "/res/map1/203.png")));
             // 重复图片

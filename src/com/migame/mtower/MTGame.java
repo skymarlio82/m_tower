@@ -216,6 +216,7 @@ public class MTGame extends JPanel {
             case 20:    // 星空
                 break;
             case 22:    // 商店
+                inConversation = true;
                 if (currentFloor == 3) {
                     ShopUtil.shop(0);
                 } else if (currentFloor == 11) {

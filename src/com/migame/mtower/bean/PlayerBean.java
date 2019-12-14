@@ -29,9 +29,9 @@ public class PlayerBean implements Serializable {
     // 构造器 游戏开始时主角的初始属性
     public PlayerBean() {
         this.level = 1;   // 初始等级      1
-        this.hp = 1000;   // 初始生命值  1000
-        this.attack = 10; // 初始攻击力    10
-        this.defend = 10; // 初始防御力    10
+        this.hp = 10000;   // 初始生命值  1000
+        this.attack = 100; // 初始攻击力    10
+        this.defend = 100; // 初始防御力    10
         this.money = 0;   // 初始金钱      0
         this.exp = 0;     // 初始经验值    0
         this.Ykey = 0;    // 初始黄钥匙数   0

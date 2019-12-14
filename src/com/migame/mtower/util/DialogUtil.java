@@ -69,7 +69,7 @@ public class DialogUtil {
                         gameFrame.removeKeyListener(this);
                         return;
                     }
-                    if (count%2 == 1) {
+                    if (count % 2 == 1) {
                         x = 400;
                         y = 310;
                     } else {
@@ -86,6 +86,10 @@ public class DialogUtil {
                     dialogLPane.add(text, 3, 0);
                     gamePanel.add(dialogLPane);
                     gamePanel.repaint();
+                } else if (e.getKeyCode() == e.VK_ESCAPE) {
+                    gamePanel.remove(dialogLPane);
+                    inConversation = false;
+                    gameFrame.removeKeyListener(this);
                 }
             }
 

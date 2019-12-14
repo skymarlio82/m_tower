@@ -43,7 +43,7 @@ public class MsgUtil {
     public static void displayMessage(String message) {
         msgLPane.setVisible(true);
         inConversation = true;
-        Timer animat = new Timer(500, new ActionListener() {
+        Timer animat = new Timer(1000, new ActionListener() {
             int count = 0;
 
             @Override
